@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign-up</title>
+    <link href="stylesheets/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="javascripts/user.js"></script>
+</head>
+<body ng-app="userApp" ng-controller="userCtrl">
+    <h1>Fit-Track</h1>
+    <p class="introParagraph">Welcome to the Fit-Track fitness tracking application. Please sign up to create your own custom diet, and weight loss plans.</p>
+    <div id="signUp">
+        <form>
+            <h2 id="signUpHeader">Sign-up</h2>
+            Username: <input type="text" id="usernameInput" class="input" ng-model="signUpUsername"></br>
+            Password: <input type="password" id="passwordInformation" ng-model="signUpPassword" class="input"></br>
+            Confirm Password: <input type="password" ng-model="signUpConfirmPassword" class="input"></br>
+            <button ng-click="submitSignUp()" type="submit" id="passwordSubmit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+body {
+  /*background-image: url('https://images.mentalfloss.com/sites/default/files/styles/mf_image_16x9/public/greenway_biking-primary.gif?itok=MfKqb6aE&resize=1100x1100');
+  background-repeat: no-repeat;*/
+  padding: 20px;
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+}
+
+h1 {
+  background-color: #47ABFF;
+  color: white;
+  height: 40px;
+  text-align: center;
+  border: solid 2px black;
+}
+
+a {
+  color: #00B7FF;
+}
+
+button {
+  margin-top: 1%;
+  width: 6%;
+  height: 30px;
+  background-color: #00B7FF;
+  color: white;
+}
+
+#usernameInput {
+  margin-top: 3%;
+}
+
+.input {
+  margin: .5%;
+  width: 15%;
+  
+}
+
+.introParagraph {
+  text-align: center;
+}
+
+#signIn {
+  text-align: center;
+  margin-top: 2%;
+  color: black;
+}
+
+#signUp {
+  text-align: center;
+  margin-top: 2%;
+  color: black;
+}
+
+#signUp p {
+  font-size: 25px;
+  margin-bottom: 0%;
+}
+
+#signIn p {
+  font-size: 25px;
+  margin-bottom: 0%;
+}
+
+.links {
+  text-align: center;
+  margin-top: 2%;
+}
+
