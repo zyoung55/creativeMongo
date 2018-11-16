@@ -4,8 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+/*Include mongoose and connect to the database. */
 var mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost/fitnessUserInfo', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/goals', {useNewUrlParser: true});
 var db = mongoose.connection;
 require('./models/User');
 db.on('error', console.error.bind(console, "connection error"));

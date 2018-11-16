@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User's Page</title>
+    <link href="stylesheets/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="javascripts/userInfo.js"></script>
+</head>
+
+<body ng-app="userInfoApp" ng-controller="userInfoCtrl">
+    <h1>On-Track<button id="logoutButton" ng-click="logout()">Logout</button></h1>
+    <p id="introLoggedInParagraph">Welcome back to the On-Track goal creating application! Use the area below to create a new goals list.</br>
+        Note: Each goal must be unique.</p>
+        
+    <div id="parentDiv">
+        <div id="goalsDiv">
+            <h2 id="fitnessGoalsHeader">Goals:</h2>
+            <ul id="longTermList" ng-repeat="longGoal in longTerm">
+                <span><li class="listItems">{{longGoal}}<button type="submit" ng-click="deleteLongGoal(longGoal)" class="deleteGoalButtons">Delete Goal</button></li></span>
+            </ul>
+            <form>
+                <span>Add a new goal: <input type="text" ng-model="newLongTerm"></span>
+                <button type="submit" ng-click="addLongTerm()" class="goalsButton">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

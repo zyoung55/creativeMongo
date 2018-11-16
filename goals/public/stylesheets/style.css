@@ -1,21 +1,11 @@
-body {
-  /*background-image: url('https://images.mentalfloss.com/sites/default/files/styles/mf_image_16x9/public/greenway_biking-primary.gif?itok=MfKqb6aE&resize=1100x1100');
-  background-repeat: no-repeat;*/
-  padding: 20px;
-  background-color: #6C6E68;
-  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
-}
-
-h1 {
-  background-color: #47ABFF;
-  color: white;
-  height: 40px;
-  text-align: center;
-  border: solid 2px black;
-}
-
 a {
   color: #00B7FF;
+}
+
+body {
+  padding: 20px;
+  background-color: #6C6E68;
+  color: white;
 }
 
 button {
@@ -26,8 +16,15 @@ button {
   color: white;
 }
 
-#usernameInput {
-  margin-top: 3%;
+h1 {
+  background-color: #47ABFF;
+  height: 40px;
+  text-align: center;
+  border: solid 2px black;
+}
+
+h5 {
+  background-color: pink;
 }
 
 .cookiesMessage {
@@ -53,7 +50,13 @@ button {
   text-align: center;
 }
 
+.links {
+  text-align: center;
+  margin-top: 2%;
+}
+
 .listItems {
+  list-style-type: none;
   font-size: 25px;  
 }
 
@@ -61,44 +64,41 @@ button {
   text-align: center;
 }
 
-#parentDiv {
-  text-align: center;
-}
-
 #goalsDiv {
   padding: 1.4%;
   display: inline-block;
   border: solid 5px black;
-  width: 40%;
+  width: 50%;
+  color: black;
   background-color: white;
 }
 
 #introLoggedInParagraph {
-  margin-bottom: 7%;
+  margin-bottom: 5%;
   text-align: center;
-  color: white;
 }
 
-#logoutDiv {
-  margin: 2%;
+#linkToHome {
+  margin-top: 2%;
+  text-align: center;
+}
+
+#logoutButton {
+  float: right;
+  height: 20px;
+  background-color: white;
+  color: black;
+  font-size: 12px;
+  width: 5%;
+}
+
+#parentDiv {
   text-align: center;
 }
 
 #signIn {
   text-align: center;
   margin-top: 2%;
-  color: black;
-}
-
-#signUp {
-  text-align: center;
-  margin-top: 2%;
-  color: black;
-}
-
-#signUp p {
-  font-size: 25px;
-  margin-bottom: 0%;
 }
 
 #signIn p {
@@ -106,12 +106,16 @@ button {
   margin-bottom: 0%;
 }
 
-.links {
+#signUp {
   text-align: center;
   margin-top: 2%;
 }
 
-h5 {
-  background-color: pink;
-  
+#signUp p {
+  font-size: 25px;
+  margin-bottom: 0%;
+}
+
+#usernameInput {
+  margin-top: 3%;
 }

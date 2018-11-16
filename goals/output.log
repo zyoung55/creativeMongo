@@ -1,0 +1,6 @@
+nohup: ignoring input
+8080
+Connected
+[0mGET / [36m304 [0m5.687 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m1.518 ms - -[0m
+[0mGET /javascripts/index.js [36m304 [0m0.608 ms - -[0m
