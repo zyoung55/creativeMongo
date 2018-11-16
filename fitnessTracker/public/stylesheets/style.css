@@ -2,6 +2,7 @@ body {
   /*background-image: url('https://images.mentalfloss.com/sites/default/files/styles/mf_image_16x9/public/greenway_biking-primary.gif?itok=MfKqb6aE&resize=1100x1100');
   background-repeat: no-repeat;*/
   padding: 20px;
+  background-color: #6C6E68;
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
 }
 
@@ -29,6 +30,19 @@ button {
   margin-top: 3%;
 }
 
+.cookiesMessage {
+  text-align: center;
+}
+
+.deleteGoalButtons {
+  margin-left: 3%;
+  width: 20%;
+}
+
+.goalsButton {
+  width: 20%;
+}
+
 .input {
   margin: .5%;
   width: 15%;
@@ -36,6 +50,37 @@ button {
 }
 
 .introParagraph {
+  text-align: center;
+}
+
+.listItems {
+  font-size: 25px;  
+}
+
+#fitnessGoalsHeader {
+  text-align: center;
+}
+
+#parentDiv {
+  text-align: center;
+}
+
+#goalsDiv {
+  padding: 1.4%;
+  display: inline-block;
+  border: solid 5px black;
+  width: 40%;
+  background-color: white;
+}
+
+#introLoggedInParagraph {
+  margin-bottom: 7%;
+  text-align: center;
+  color: white;
+}
+
+#logoutDiv {
+  margin: 2%;
   text-align: center;
 }
 
@@ -66,3 +111,7 @@ button {
   margin-top: 2%;
 }
 
+h5 {
+  background-color: pink;
+  
+}

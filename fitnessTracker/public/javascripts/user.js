@@ -31,7 +31,30 @@ var app = angular.module('userApp', [])
         .then(function(response) {
             if (response.data) {
                 console.log("Data" + response.data);
-                //window.location.replace("userPage.html");
+                var date = new Date();
+                var day = date.getDay();
+                console.log("day: " + day);
+                var utcDate = date.getUTCDate(); //Get day of the month
+                var utcYear = date.getUTCFullYear(); //Get the current year.
+                var utcHour = date.getUTCHours(); //Get current hours.
+                var utcMinutes = date.getMinutes(); //Get current Minutes
+                var utcMonth = date.getUTCMonth(); //Current month;
+                var utcSeconds = date.getUTCSeconds(); //Get current seconds.
+                var utcMillisecond = date.getMilliseconds(); //Get current milliseconds.
+                console.log("date: " + utcDate + " Year " + utcYear + " Hour:" + utcHour + " Minutes:" + utcMinutes + " month" + utcMonth);
+                var nextUtcDay = utcDate + 1;
+                var utcCompleteDate = new Date(utcYear, utcMonth, nextUtcDay, utcHour, utcMinutes, utcSeconds, utcMillisecond);
+                //var potentialCookie = "username=" + response.data + "expires=" utcDate + 1
+                console.log(utcCompleteDate);
+                var stringDate = utcCompleteDate.toString();
+                var shortDate = stringDate.split(' ');
+                console.log(shortDate[0]);
+                var potentialCookie = "username=" + response.data + "; expires=" + shortDate[0] + ", " + shortDate[2] + " " + shortDate[1] + " " + shortDate[3] + " " + shortDate[4] + " UTC";
+                console.log(potentialCookie);
+                document.cookie = potentialCookie;
+                var cookieString = document.cookie;
+                console.log("Cookie String: " + cookieString);
+                window.location.replace("userPage.html");
             }
         }, function errorCheck(response) {
             alert("Somebody has already signed up with that username. Please try a different input.");

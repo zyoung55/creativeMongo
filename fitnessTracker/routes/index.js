@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var bodyParser = require('body-parser');
+
+router.use(bodyParser.urlencoded({ extended: false}));
+router.use(bodyParser.json());
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,7 +27,7 @@ router.get('/users', function(req, res, next) {
     });
 }); 
 
-router.param('findUser', function(req, res, next, name) {
+router.param('findIfUserExists', function(req, res, next, name) {
   console.log("made it into param");
   User.find({username : name}, function(err, user) {
     console.log("did something!");
@@ -33,7 +37,7 @@ router.param('findUser', function(req, res, next, name) {
   });
 });
 
-router.post('/users/:findUser', function(req, res, next) {
+router.post('/users/:findIfUserExists', function(req, res, next) {
   console.log("In users post");
   console.log(req.body);
   var user = new User(req.body);
@@ -50,19 +54,72 @@ router.post('/users/:findUser', function(req, res, next) {
     }
   });
 });
-    
+
+router.param('findUser', function(req, res, next, name) {
+  console.log("made it into param2");
+  User.find({username : name}, function(err, user) {
+    console.log("Did something");
+    if(err) { return next(err); };
+    if (!user[0]) { 
+      return next(new Error("There is no user with that specified username."));
+    }
+    req.user = user[0];
+    return next();
+  });
+});
+
+router.get('/getList/:findUser', function(req, res, next) {
+  console.log("In getList");
+  console.log(req.user);
+  res.send(req.user.longTerm);
+})
+
+router.put('/putList/:findUser', function(req, res, next) {
+  if(req.body.deleteGoal) {
+    console.log("req.body.deleteGoal" + req.body.deleteGoal);
+    console.log("Hey oh!!!");
+    var deleteString = req.body.deleteGoal;
+    deleteString = deleteString.toString("utf8");
+    for (var i = 0; i < req.user.longTerm.length; ++i) {
+      console.log("deleteGoal: + " + "/" + req.body.deleteGoal + "/");
+      console.log("/" + req.user.longTerm[i] + "/");
+      if (req.user.longTerm[i] === deleteString) {
+        console.log(";)");
+        //{ $pull: { connections : { _id : connId } } },
+        //Favorite.update( {cn: req.params.name}, { $pullAll: {uid: [req.params.deleteUid] } } )
+        //{$pull: {members: {tweetID: '5327010328645530500'}}}, 
+        var documentString = req.user.longTerm[i];
+        documentString = documentString.toString('utf8');
+        //documentString = JSON.stringify(documentString);
+        console.log("documentString" + documentString);
+        req.user.update({$pull: {longTerm : documentString}}, {safe: true});
+        return;
+        /*req.user.save(function(err, user) {
+          if(err) { return next(err); }
+          return;
+        })*/
+      }
+    }
+    return;
+  }
+  console.log("In users post!");
+  console.log("Request user: " + req.user);
+  console.log("Req body:" + req.body.listItem);
+  req.user.addLong(req.body.listItem, function(err, user) {
+    if(err) { console.log("WHY???!!!"); return next(err); }
+    res.send(req.body.listItem);
+  })
+});
+
+router.delete('/deleteList/:findUser', function(req, res, next) {
+  console.log("In delete list!!!");
+  console.log("Delete Goal: " + req.body.foo);
+  console.log("DELETE USER: " + req.user);
+})
+
+
+
 module.exports = router;
-
-/*{data: "<!DOCTYPE html><html><head><title></title><link re…l/process/next_tick.js:104:9)</pre></body></html>", status: 500, headers: ƒ, config: {…}, statusText: "Internal Server Error", …}
-config: {method: "POST", transformRequest: Array(1), transformResponse: Array(1), paramSerializer: ƒ, jsonpCallbackParam: "callback", …}
-data: "<!DOCTYPE html><html><head><title></title><link rel="stylesheet" href="/stylesheets/style.css"></head><body><h1>Aldready a user with specified username</h1><h2></h2><pre>Error: Aldready a user with specified username↵    at /var/www/html/creativeMongoLab/fitnessTracker/routes/index.js:31:54↵    at /var/www/html/creativeMongoLab/fitnessTracker/node_modules/mongoose/lib/model.js:4527:16↵    at process.nextTick (/var/www/html/creativeMongoLab/fitnessTracker/node_modules/mongoose/lib/helpers/query/completeMany.js:35:39)↵    at _combinedTickCallback (internal/process/next_tick.js:73:7)↵    at process._tickCallback (internal/process/next_tick.js:104:9)</pre></body></html>"
-headers: ƒ (d)
-status: 500
-statusText: "Internal Server Error"
-xhrStatus: "complete"
-__proto__: Object
-*/
-
 
 /*[
 {
